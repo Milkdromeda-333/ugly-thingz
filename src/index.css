@@ -22,6 +22,10 @@ body {
   font-family: var(--text);
 }
 
+.container {
+  position: relative;
+}
+
 /* NAV */
 
 nav {
@@ -84,8 +88,8 @@ main {
 
 
 /* CARD STYLING */
+
 .card {
-  /* height: 70%; */
   outline: 2px solid var(--color2);
   background-color: var(--color2);
   margin-block-end: 2rem;
@@ -111,7 +115,7 @@ main {
 .card--options {
   background-color: var(--color4);
   padding: .5rem;
-  position: relative;
+  /* position: relative; */
   bottom: 0;
   margin-block-start: 2.5rem;
 }
@@ -126,4 +130,84 @@ main {
   background: url(/src/assets/icons8-edit-30.png);
   background-repeat: no-repeat;
   padding: 2px 20px;
+}
+
+/*  MODAL */
+
+.modal {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: none;
+}
+
+
+.modal h2 {
+  width: 100%;
+  text-align: center;
+  border-block-end: 2px solid var(--color2);
+  padding-block-end: 1rem;
+  font-size: 2rem;
+}
+
+.close {
+  margin: 1rem 2rem;
+  font-size: 2.5rem;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  transition: all ease-in-out .2s;
+}
+
+.close:hover {
+  color: var(--color3);
+}
+
+#post-something-ugly--decor {
+  font-family: var(--decorative);
+  color: var(--color3);
+  text-decoration: underline;
+  font-size: 3rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form input,
+form textarea {
+  width: 30rem;
+  height: 2rem;
+  margin-block-end: 2rem;
+  font-family: var(--text);
+}
+
+form textarea {
+  height: 5rem;
+}
+
+label {
+  font-size: 1.5rem;
+}
+
+form button {
+  border-radius: 5px;
+  background-color: var(--color4);
+  color: var(--color3);
+  padding: 1rem 2rem;
+  font-family: inherit;
+  transition: all ease .25s;
+}
+
+form button:hover {
+  color: var(--color4);
+  outline: 2px solid var(--color3);
+  background-color: var(--color3);
 }
