@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Reggae+One&display=swap');
+
+:root {
+  /* Fonts */
+  --decorative: 'Creepster', cursive;
+  --text: 'Reggae One', cursive;
+
+  /* colors */
+  --background-color: rgb(24, 24, 26);
+  --color2: rgb(235, 97, 35);
+  --color2-shade: rgba(235, 98, 35, 0.795);
+  --color3: rgb(94, 50, 186);
+  --color3-shade: rgba(93, 50, 186, 0.619);
+  --color4: rgb(150, 196, 87);
+}
+
+body {
+  margin: 0;
+
+  background-color: var(--background-color);
+  color: var(--color2);
+  font-family: var(--text);
+}
+
+/* NAV */
+
+nav {
+  border-bottom: 2px solid;
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1rem;
+}
+
+#title {
+  font-family: var(--decorative);
+  font-size: 3rem;
+  position: relative;
+}
+
+#title::before {
+  content: url(src/assets/icons8-cat-52.png);
+  position: relative;
+  top: 3px;
+}
+
+nav button {
+  background: var(--color3);
+  outline: 3px solid;
+  border: none;
+  color: var(--color4);
+  font-family: inherit;
+  transition: all ease .25s;
+
+}
+
+nav button:hover {
+  outline: 3px solid var(--color2);
+  color: var(--color4);
+  transition: all .1s;
+}
+
+nav button:active {
+  outline: 2px solid black;
+  background-color: red;
+  color: black;
+}
+
+/* MAIN */
+
+main {
+  padding-inline: 25vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 87vh;
+  color: var(--color4);
+}
+
+.cards {
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
+
+/* CARD STYLING */
+.card {
+  /* height: 70%; */
+  outline: 2px solid var(--color2);
+  background-color: var(--color2);
+  margin-block-end: 2rem;
+}
+
+.card h2 {
+  text-align: center;
+  background-color: var(--color3);
+  margin: 0;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card--description p {
+  margin: 0;
+  color: var(--color3);
+  text-shadow: 0px 3px 3px rgba(198, 218, 122, 0.6);
+}
+
+
+.card--options {
+  background-color: var(--color4);
+  padding: .5rem;
+  position: relative;
+  bottom: 0;
+  margin-block-start: 2.5rem;
+}
+
+#delete-btn {
+  background: url(/src/assets/icons8-delete-30.png);
+  background-repeat: no-repeat;
+  padding: 2px 20px;
+}
+
+#edit-btn {
+  background: url(/src/assets/icons8-edit-30.png);
+  background-repeat: no-repeat;
+  padding: 2px 20px;
+}
