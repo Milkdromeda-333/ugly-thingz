@@ -32,8 +32,12 @@ nav {
   border-bottom: 2px solid;
   display: flex;
   justify-content: space-between;
-
-  padding: 1rem;
+  align-items: center;
+  width: 100%;
+  height: 90px;
+  position: fixed;
+  top: 0;
+  background-color: var(--background-color);
 }
 
 #title {
@@ -50,16 +54,18 @@ nav {
 
 nav button {
   background: var(--color3);
-  outline: 3px solid;
+  outline: 2px solid var(--color2);
   border: none;
   color: var(--color4);
   font-family: inherit;
   transition: all ease .25s;
-
+  height: 100%;
+  margin-top: 1px;
+  margin-inline-end: 2px;
 }
 
 nav button:hover {
-  outline: 3px solid var(--color2);
+  outline: 3px solid var(--color4);
   color: var(--color4);
   transition: all .1s;
 }
@@ -74,25 +80,36 @@ nav button:active {
 
 main {
   padding-inline: 25vw;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 87vh;
+  /* display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 87vh; */
   color: var(--color4);
+  margin-block: 150px;
 }
 
-.cards {
-  overflow-y: scroll;
-  padding: 1rem;
+h1 {
+  position: fixed;
+  top: 7rem;
+  left: 10rem;
 }
+
+
 
 
 /* CARD STYLING */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .card {
   outline: 2px solid var(--color2);
   background-color: var(--color2);
   margin-block-end: 2rem;
+  width: 35vw;
 }
 
 .card h2 {
@@ -101,8 +118,14 @@ main {
   margin: 0;
 }
 
+.card--img-container {
+  height: 45vh;
+}
+
 .card img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card--description p {
@@ -135,8 +158,9 @@ main {
 /*  MODAL */
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   background-color: var(--background-color);
@@ -179,6 +203,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 }
 
 form input,
@@ -210,4 +235,37 @@ form button:hover {
   color: var(--color4);
   outline: 2px solid var(--color3);
   background-color: var(--color3);
+}
+
+/* FOOTER */
+
+footer {
+  box-sizing: border-box;
+  background-color: var(--color3);
+  position: absolute;
+  bottom: -150px;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+footer a {
+  color: var(--color4);
+}
+
+footer div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* margin-inline-start: .5rem; */
+  border-top: 2px solid white;
+  border-right: 2px solid white;
+  border-left: 2px solid white;
+  padding: .5rem;
 }
