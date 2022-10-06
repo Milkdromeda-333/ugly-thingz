@@ -1,6 +1,7 @@
 ### Ugly Thingz.
+<hr>
 
-- This project is a website where you post ugly things. 
+This project is a website where you post ugly things. 
 
 I used:
 - axios library to make XMLHttpRequests
