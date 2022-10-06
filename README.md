@@ -6,6 +6,7 @@ This project is a website where you post ugly things.
 I used:
 - axios library to make XMLHttpRequests
 - React and its hooks to render the app and the changes that will occur
+- ugly things API by V-school to host my data
 
 I learned:
 - That there will be problems that will seen unsolvable, try to simulate the desired results.
