@@ -131,7 +131,10 @@ function App() {
   return (
     <div className="container">
       <nav>
-        <span id="title">UglyThingz.</span>
+        <div id="brand">
+          <img src="src/assets/icons8-cat-52.png" alt="logo cat" />
+          <span id="title">UglyThingz.</span>
+        </div>
         <button id="openModelBtn" onClick={toggleModal}>Submit new thing.</button>
       </nav>
       <main>
@@ -160,22 +163,18 @@ function App() {
 
         {/* FORM */}
         <form onSubmit={handleSubmit}>
-
           <label htmlFor="thing-title">
             Title: <br />
             <input type="text" required name="title" id="thing-title" placeholder="whats the hideous thing?" onChange={handleChange} value={formInfo.title} />
           </label>
-
           <label htmlFor="imgUrl">
             Image Url: <br />
             <input type="text" required name="imgUrl" id="imgUrl" placeholder="EEK..show us..." onChange={handleChange} value={formInfo.imgUrl} />
           </label>
-
           <label htmlFor="description">
             Descripion: <br />
             <textarea required name="description" id="description" placeholder="GAHH, explain this!.." onChange={handleChange} value={formInfo.description} />
           </label>
-
           <button>Submit</button>
 
         </form>
