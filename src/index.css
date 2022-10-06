@@ -8,28 +8,22 @@
   /* colors */
   --background-color: rgb(24, 24, 26);
   --color2: rgb(235, 97, 35);
-  --color2-shade: rgba(235, 98, 35, 0.795);
   --color3: rgb(94, 50, 186);
-  --color3-shade: rgba(93, 50, 186, 0.619);
   --color4: rgb(150, 196, 87);
 }
 
 body {
   margin: 0;
-
+  font-size: 18px;
   background-color: var(--background-color);
   color: var(--color2);
   font-family: var(--text);
 }
 
-.container {
-  position: relative;
-}
-
 /* NAV */
 
 nav {
-  border-bottom: 2px solid;
+  border: 2px solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,14 +36,17 @@ nav {
 
 #title {
   font-family: var(--decorative);
-  font-size: 3rem;
-  position: relative;
+  font-size: 4rem;
+  margin-left: .5rem;
+}
+
+#title:hover {
+  color: var(--color3);
+  text-shadow: 4px 6px 3px rgba(94, 50, 186, 0.42);
 }
 
 #title::before {
   content: url(src/assets/icons8-cat-52.png);
-  position: relative;
-  top: 3px;
 }
 
 nav button {
@@ -66,7 +63,7 @@ nav button {
 
 nav button:hover {
   outline: 3px solid var(--color4);
-  color: var(--color4);
+  color: var(--color2);
   transition: all .1s;
 }
 
@@ -79,22 +76,20 @@ nav button:active {
 /* MAIN */
 
 main {
-  padding-inline: 25vw;
-  /* display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 87vh; */
   color: var(--color4);
-  margin-block: 150px;
+  border-inline: 2px solid var(--color2);
 }
 
 h1 {
   position: fixed;
-  top: 7rem;
+  top: 10rem;
   left: 10rem;
 }
 
-
-
+h1:hover {
+  color: var(--color3);
+  text-shadow: 4px 6px 3px rgba(94, 50, 186, 0.42);
+}
 
 /* CARD STYLING */
 
@@ -103,6 +98,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 10rem;
 }
 
 .card {
@@ -116,10 +112,12 @@ h1 {
   text-align: center;
   background-color: var(--color3);
   margin: 0;
+  padding: .5rem;
 }
 
 .card--img-container {
   height: 45vh;
+  margin-bottom: .5rem;
 }
 
 .card img {
@@ -134,11 +132,9 @@ h1 {
   text-shadow: 0px 3px 3px rgba(198, 218, 122, 0.6);
 }
 
-
 .card--options {
   background-color: var(--color4);
   padding: .5rem;
-  /* position: relative; */
   bottom: 0;
   margin-block-start: 2.5rem;
 }
@@ -153,6 +149,27 @@ h1 {
   background: url(/src/assets/icons8-edit-30.png);
   background-repeat: no-repeat;
   padding: 2px 20px;
+}
+
+
+#submit-edit-btn {
+  background-color: black;
+  color: white;
+  padding: .2rem;
+  border-radius: 5px;
+}
+
+#exit-edit-btn {
+  background-color: red;
+  color: black;
+  padding: .2rem;
+  border-radius: 5px;
+  margin-left: .5rem;
+}
+
+#submit-edit-btn:hover,
+#exit-edit-btn:hover {
+  outline: 2px solid white;
 }
 
 /*  MODAL */
@@ -196,6 +213,15 @@ h1 {
   color: var(--color3);
   text-decoration: underline;
   font-size: 3rem;
+  transition: all ease-in-out .2s;
+  padding: .5rem;
+}
+
+#post-something-ugly--decor:hover {
+  background: linear-gradient(to right, var(--color3), var(--color2));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 form {
@@ -207,11 +233,13 @@ form {
 }
 
 form input,
-form textarea {
+form textarea,
+.card input {
   width: 30rem;
   height: 2rem;
   margin-block-end: 2rem;
   font-family: var(--text);
+  border-radius: 5px;
 }
 
 form textarea {
@@ -242,16 +270,14 @@ form button:hover {
 footer {
   box-sizing: border-box;
   background-color: var(--color3);
-  position: absolute;
-  bottom: -150px;
-  left: 0;
   width: 100%;
-  padding: 1rem;
+  padding-top: .5rem;
+  border: 2px solid var(--color2);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
 
 footer a {
@@ -263,9 +289,8 @@ footer div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* margin-inline-start: .5rem; */
-  border-top: 2px solid white;
-  border-right: 2px solid white;
-  border-left: 2px solid white;
+  border-top: 2px solid var(--color2);
+  border-right: 2px solid var(--color2);
+  border-left: 2px solid var(--color2);
   padding: .5rem;
 }

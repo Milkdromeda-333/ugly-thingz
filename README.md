@@ -1,8 +1,13 @@
-<!--
- sources 
-<a target="_blank" href="https://icons8.com/icon/822/cat">Cat</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+### Ugly Thingz.
 
-<a target="_blank" href="https://icons8.com/icon/XHnCehT213az/delete">Delete</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+- This project is a website where you post ugly things. 
 
-<a target="_blank" href="https://icons8.com/icon/GUDC4RvoONvj/edit">Edit</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
--->
+I used:
+- axios library to make XMLHttpRequests
+- React and its hooks to render the app and the changes that will occur
+
+I learned:
+- That there will be problems that will seen unsolvable, try to simulate the desired results.
+- If you're feeling overwhelmed take a short break away from the computer and come back with a relaxed mind.
+- carefully think through your problem when debugging.
+- look back at the staged versions diff's to find what you changed if you broke the site after a lot of changes. 

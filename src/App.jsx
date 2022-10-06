@@ -1,37 +1,27 @@
 import Card from "./Card.jsx";
 import { Context } from "./UglyThingsContext.jsx";
 import { useContext, useEffect, useState } from "react";
-import { post, axios } from "axios";
+import axios from "axios";
 
 /*
-
-PROJECT:
-MAKE A SITE THAT ALLOWS A USER TO POST SOMETHING THAT THEY FIND UGLY, ADD A TITLE, DESCRIPTION, AND AN IMAGE ADDRESS, TO AN API. BE ABLE TO DELETE AND UPDATE THE POST. USER SEES THE UGLY THINSG ON THE DASHBOARD.
-
-NOTES:
-- make it halloween themed.
--
-
 TO-DO:
-[x] make a component that makes cards
-[x] make context that passes state of the ugly things and its info
-[]make a way to post thingz
-[] make a way to delete things
-[] make a way to edit things
+[] ADD ANIMATION TO:
+   [] THE MODAL RENDERING
+   [] A CARD DELETING
+   [] ADD A SCREEN UNTIL THE FIRST PAGE IS FULLY RENDERED.
+   [] ADD RESPONSIVENESS
+   [] ADD REAL ICONS FOR MY OPTIONS ICONS
 
 
   DOING:
-  be able to post new thing
-  
-
-  !!!!! 
-  axios delete requiest isnt working.
-  post isnt working
+ 
+    IM BASICALLY FINISHED. I WANT TO ADD A FEW MORE THINGS TO ADD THE CHERRYIES ON THE TOP.
 */
 
 function App() {
 
-  const url = "https://api.vschool.io/anjaniquem/thing";
+  // STATES
+  const url = "https://api.vschool.io/anjaniquem/thing/";
   const [things, setThings] = useContext(Context);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formInfo, setFormInfo] = useState({
@@ -39,14 +29,17 @@ function App() {
     description: "",
     imgUrl: ""
   });
+
+  // DOCS: this will be updates as the user makes a request, to inform the useEffect function on which if statement to run
   const [requestType, setRequestType] = useState({
-    get: false,
     post: false,
     deletereq: false,
     id: null,
-    put: false
+    put: false,
+    newItem: null
   });
 
+  // FUNCTIONS
   function handleChange(e) {
     const { name, value } = e.target;
     setFormInfo(prev => ({
@@ -62,46 +55,61 @@ function App() {
       ...prev,
       post: true
     }));
+    setFormInfo({
+      title: "",
+      description: "",
+      imgUrl: ""
+    });
+    toggleModal();
   }
 
   function deleteThing(id) {
     const indexOfThing = things.findIndex((elem) => elem._id === id);
-
     setRequestType(prev => ({
       ...prev,
       deletereq: true,
       id: id
     }));
-
     setThings(prev => ([...prev].filter((_, index) => index !== indexOfThing)));
-
-    console.log(`${url}${id}`);
-
   }
 
-  useEffect(() => {
+  function updateThing(id, updatedItem) {
+    setRequestType(prev => ({
+      ...prev,
+      put: true,
+      id: id,
+      newItem: updatedItem
+    }));
+  }
 
-    // this posts a new thing onSubmit in the form IF the from title has value
-    if (requestType.post === true) {
-      post(url, formInfo)
+  // DOCS: when a reuest is made (delete a thing, create a new, or edit) this will run, and check which request im making
+  useEffect(() => {
+    if (requestType.post) {
+      axios.post(url, formInfo)
         .then(setRequestType(prev => ({
           ...prev,
           post: false
         })))
-        .catch(err => console.log(err.response.data.error));
-      console.log("made get request");
+        .catch(err => console.log(err));
     }
 
     if (requestType.deletereq) {
       axios.delete(`${url}${requestType.id}`)
-        .then(res => console.log(res))
+        .then(setRequestType(prev => ({ ...prev, deletereq: false })))
         .catch(err => console.log(err));
+    }
+
+    if (requestType.put) {
+      axios.put(`${url}${requestType.id}`, requestType.newItem)
+        .catch(err => console.log(err));
+      setThings(prev => prev.map((thing, index) => thing._id === requestType.id ? { ...prev[index], ...requestType.newItem } : thing));
+      setRequestType(prev => ({ ...prev, put: false, id: null }));
     }
   }, [requestType]);
 
   // modal styling
-
   function toggleModal() {
+
     const body = document.getElementsByTagName("body")[0];
     const modal = document.getElementsByClassName("modal")[0];
 
@@ -115,11 +123,9 @@ function App() {
       body.style.overflowY = "hidden";
       setIsModalOpen(prev => !prev);
     }
-
-
   }
-  // renders cards
-  const cards = things.map(info => <Card {...info} key={info._id} deleteThingFunc={deleteThing} />);
+  // DOCS: renders cards
+  const cards = things.map(info => <Card {...info} key={info._id} deleteThingFunc={deleteThing} updateThingFunc={updateThing} />);
 
 
   return (
@@ -130,8 +136,6 @@ function App() {
       </nav>
       <main>
         <h1>Ugly things:</h1>
-        {/* empty div to hold the space for the grid title */}
-        <div></div>
         <section className="cards">
           {cards}
         </section>
