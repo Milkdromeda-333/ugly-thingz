@@ -10,4 +10,5 @@ I learned:
 - That there will be problems that will seen unsolvable, try to simulate the desired results.
 - If you're feeling overwhelmed take a short break away from the computer and come back with a relaxed mind.
 - carefully think through your problem when debugging.
-- look back at the staged versions diff's to find what you changed if you broke the site after a lot of changes. 
+- look back at the staged versions diff's to find what you changed if you broke the site after a lot of changes.
+- That you should put media queries either underneath its co-responding code or at the very bottom of the stylesheet because the cascade still applies.
