@@ -1,6 +1,7 @@
 ### Ugly Thingz.
+<hr>
 
-- This project is a website where you post ugly things. 
+This project is a website where you post ugly things. 
 
 I used:
 - axios library to make XMLHttpRequests
@@ -12,3 +13,4 @@ I learned:
 - carefully think through your problem when debugging.
 - look back at the staged versions diff's to find what you changed if you broke the site after a lot of changes.
 - That you should put media queries either underneath its co-responding code or at the very bottom of the stylesheet because the cascade still applies.
+- To use git pull to sync the changes that isn't on my local machine with the remote version to solve a merge conflict.
