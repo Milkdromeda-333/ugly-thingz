@@ -5,25 +5,6 @@ import axios from "axios";
 import LoadPage from "./LoadPage.jsx";
 import Logo from "./Logo.jsx";
 
-/*
-TO-DO:
-[] ADD ANIMATION TO:
-   [x] THE MODAL RENDERING
-   [] A CARD DELETING
-[x] ADD A SCREEN UNTIL THE FIRST PAGE IS FULLY RENDERED.
-[x] ADD RESPONSIVENESS
-[x] ADD REAL ICONS FOR MY OPTIONS ICONS
-
-
-  DOING:
- 
-    IM BASICALLY FINISHED. I WANT TO ADD A FEW MORE THINGS TO ADD THE CHERRYIES ON THE TOP.
-
-    commit:
-    
-
-*/
-
 function App() {
 
   // STATES
