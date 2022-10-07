@@ -8,7 +8,7 @@ import Logo from "./Logo.jsx";
 /*
 TO-DO:
 [] ADD ANIMATION TO:
-   [] THE MODAL RENDERING
+   [x] THE MODAL RENDERING
    [] A CARD DELETING
 [x] ADD A SCREEN UNTIL THE FIRST PAGE IS FULLY RENDERED.
 [x] ADD RESPONSIVENESS
@@ -20,9 +20,7 @@ TO-DO:
     IM BASICALLY FINISHED. I WANT TO ADD A FEW MORE THINGS TO ADD THE CHERRYIES ON THE TOP.
 
     commit:
-    fixed responsiveness
-    changed icons to bootstrap icons
-    added loading screen
+    
 
 */
 
@@ -100,14 +98,15 @@ function App() {
     const modal = document.getElementsByClassName("modal")[0];
 
     if (isModalOpen) {
-      modal.style.display = "none";
       body.style.overflowY = "visible";
       setIsModalOpen(prev => !prev);
+      modal.classList.replace("show", "hide");
 
     } else {
       modal.style.display = "block";
       body.style.overflowY = "hidden";
       setIsModalOpen(prev => !prev);
+      modal.classList.replace("hide", "show");
     }
   }
 
@@ -174,7 +173,7 @@ function App() {
       </footer>
 
       {/* MODAL */}
-      <div className="modal">
+      <div className="modal hide">
 
         <div className="modal--header">
           <h2>Post something <span id="post-something-ugly--decor">UGLY</span>
