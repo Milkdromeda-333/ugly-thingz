@@ -2,20 +2,28 @@ import Card from "./Card.jsx";
 import { Context } from "./UglyThingsContext.jsx";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import LoadPage from "./LoadPage.jsx";
+import Logo from "./Logo.jsx";
 
 /*
 TO-DO:
 [] ADD ANIMATION TO:
    [] THE MODAL RENDERING
    [] A CARD DELETING
-   [] ADD A SCREEN UNTIL THE FIRST PAGE IS FULLY RENDERED.
-   [] ADD RESPONSIVENESS
-   [] ADD REAL ICONS FOR MY OPTIONS ICONS
+[x] ADD A SCREEN UNTIL THE FIRST PAGE IS FULLY RENDERED.
+[x] ADD RESPONSIVENESS
+[x] ADD REAL ICONS FOR MY OPTIONS ICONS
 
 
   DOING:
  
     IM BASICALLY FINISHED. I WANT TO ADD A FEW MORE THINGS TO ADD THE CHERRYIES ON THE TOP.
+
+    commit:
+    fixed responsiveness
+    changed icons to bootstrap icons
+    added loading screen
+
 */
 
 function App() {
@@ -23,6 +31,7 @@ function App() {
   // STATES
   const url = "https://api.vschool.io/anjaniquem/thing/";
   const [things, setThings] = useContext(Context);
+  const [isLoadPageOpen, setIsLoadPageOpen] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formInfo, setFormInfo] = useState({
     title: "",
@@ -82,6 +91,28 @@ function App() {
     }));
   }
 
+
+
+  // modal styling
+  function toggleModal() {
+
+    const body = document.getElementsByTagName("body")[0];
+    const modal = document.getElementsByClassName("modal")[0];
+
+    if (isModalOpen) {
+      modal.style.display = "none";
+      body.style.overflowY = "visible";
+      setIsModalOpen(prev => !prev);
+
+    } else {
+      modal.style.display = "block";
+      body.style.overflowY = "hidden";
+      setIsModalOpen(prev => !prev);
+    }
+  }
+
+  // USE STATE HOOKS
+
   // DOCS: when a reuest is made (delete a thing, create a new, or edit) this will run, and check which request im making
   useEffect(() => {
     if (requestType.post) {
@@ -107,34 +138,22 @@ function App() {
     }
   }, [requestType]);
 
-  // modal styling
-  function toggleModal() {
+  // takes off load screen
+  useEffect(() => {
+    const timer = setTimeout(() => { setIsLoadPageOpen(false); }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
-    const body = document.getElementsByTagName("body")[0];
-    const modal = document.getElementsByClassName("modal")[0];
 
-    if (isModalOpen) {
-      modal.style.display = "none";
-      body.style.overflowY = "visible";
-      setIsModalOpen(prev => !prev);
-
-    } else {
-      modal.style.display = "block";
-      body.style.overflowY = "hidden";
-      setIsModalOpen(prev => !prev);
-    }
-  }
   // DOCS: renders cards
   const cards = things.map(info => <Card {...info} key={info._id} deleteThingFunc={deleteThing} updateThingFunc={updateThing} />);
 
 
   return (
     <div className="container">
+      {isLoadPageOpen ? <LoadPage /> : null}
       <nav>
-        <div id="brand">
-          <img src="src/assets/icons8-cat-52.png" alt="logo cat" />
-          <span id="title">UglyThingz.</span>
-        </div>
+        <Logo />
         <button id="openModelBtn" onClick={toggleModal}>Submit new thing.</button>
       </nav>
       <main>
@@ -143,12 +162,14 @@ function App() {
           {cards}
         </section>
       </main>
+
       {/* FOOTER */}
       <footer>
         <img src="src/assets/icons8-cat-52.png" alt="" />
         <div>
           <span>Delete icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
           <span>Edit icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
+          <span>Loader gif from <a href="https://loading.io/" target="_blank">loading.io</a></span>
         </div>
       </footer>
 

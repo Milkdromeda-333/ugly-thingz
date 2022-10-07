@@ -33,13 +33,13 @@ nav {
   background-color: var(--background-color);
 }
 
-#title {
+.title {
   font-family: var(--decorative);
   font-size: 4rem;
   /* margin-left: .5rem; */
 }
 
-#title:hover {
+.title:hover {
   color: var(--color3);
   text-shadow: 4px 6px 3px rgba(94, 50, 186, 0.42);
 }
@@ -148,15 +148,22 @@ h1:hover {
 }
 
 #delete-btn {
-  background: url(/src/assets/icons8-delete-30.png);
-  background-repeat: no-repeat;
-  padding: 2px 20px;
+  color: red;
+  font-size: 1.5rem;
+}
+
+#delete-btn:hover {
+  color: rgba(255, 0, 0, 0.81);
 }
 
 #edit-btn {
-  background: url(/src/assets/icons8-edit-30.png);
-  background-repeat: no-repeat;
+  font-size: 1.5rem;
   padding: 2px 20px;
+  color: white;
+}
+
+#edit-btn:hover {
+  color: rgba(255, 255, 255, 0.772);
 }
 
 
@@ -190,6 +197,7 @@ h1:hover {
   height: 100vh;
   background-color: var(--background-color);
   display: none;
+
 }
 
 .modal--header {
@@ -305,6 +313,37 @@ footer div {
   padding: .5rem;
 }
 
+/* LOAD PAGE */
+
+.load-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+
+  background-color: var(--background-color);
+  color: white;
+}
+
+.loadPage--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--color2);
+}
+
+.load-page #brand img {
+  object-fit: contain;
+}
+
+.load-page h2 {
+  color: var(--color3);
+}
+
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1109px) {
@@ -338,7 +377,7 @@ footer div {
     padding: 1rem;
   }
 
-  #title {
+  .title {
     font-size: 2rem;
   }
 
@@ -357,11 +396,22 @@ footer div {
 
   main {
     margin-top: 5rem;
-    padding-top: 0rem;
+    padding-top: 3rem;
+  }
+
+  .card {
+    width: 80vw;
   }
 
   .card h2 {
     font-size: 1rem;
+  }
+
+  .form input,
+  form textarea,
+  .card input {
+    width: unset;
+    margin: 0;
   }
 
   .modal--header h2 {

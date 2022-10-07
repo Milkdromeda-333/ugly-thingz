@@ -34,8 +34,12 @@ export default function Card({ title, description, imgUrl, _id, deleteThingFunc,
                 {isEditOpen ? <input name="description" value={inputs.description} onChange={handleChange} /> : <p>{description}</p>}
             </div>
             <div className="card--options">
-                <span id="delete-btn" onClick={() => deleteThingFunc(_id)}></span>
-                <span id="edit-btn" onClick={() => setIsEditOpen(prev => !prev)}></span>
+                <span id="delete-btn" onClick={() => deleteThingFunc(_id)}>
+                    <i className="bi bi-trash fa-5x"></i>
+                </span>
+                <span id="edit-btn" onClick={() => setIsEditOpen(prev => !prev)}>
+                    <i className="bi bi-pencil-square"></i>
+                </span>
                 {isEditOpen ? <span onClick={handleSubmit} id="submit-edit-btn">save</span> : null}
                 {isEditOpen ? <span onClick={() => setIsEditOpen(false)} id="exit-edit-btn">exit</span> : null}
             </div>
