@@ -145,7 +145,7 @@ function App() {
 
       {/* FOOTER */}
       <footer>
-        <img src="./icons8-cat-52.png" alt="" />
+        <img src="../images/icons8-cat-52.png" alt="" />
         <div>
           <span>Delete icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
           <span>Edit icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
