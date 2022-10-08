@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import LoadPage from "./LoadPage.jsx";
 import Logo from "./Logo.jsx";
+import NoCards from "./NoCards.jsx";
 
 function App() {
 
@@ -139,13 +140,14 @@ function App() {
       <main>
         <h1>Ugly things:</h1>
         <section className="cards">
-          {cards}
+          {/* {cards} */}
+          {cards.length > 0 ? cards : <NoCards />}
         </section>
       </main>
 
       {/* FOOTER */}
       <footer>
-        <img src="src/images/icons8-cat-52.png" alt="" />
+        <img src="icons8-cat-52.png" alt="" />
         <div>
           <span>Delete icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>
           <span>Edit icon by <a target="_blank" href="https://icons8.com">Icons8</a></span>

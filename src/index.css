@@ -23,7 +23,7 @@ body {
 /* NAV */
 
 nav {
-  border: 2px solid;
+  border: 3px solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,25 +57,27 @@ nav {
 
 nav button {
   background: var(--color3);
-  outline: 2px solid var(--color2);
+  outline: 3px solid var(--color2);
   border: none;
+  border-block: none;
   color: var(--color4);
   font-family: inherit;
   transition: all ease .25s;
   height: 100%;
-  margin-top: 1px;
   margin-inline-end: 2px;
-  padding: 2rem 5rem;
+  padding: 2rem 4rem;
+  font-size: 1.2rem;
 }
 
 nav button:hover {
   outline: 3px solid var(--color4);
+  border: none;
   color: var(--color2);
   transition: all .1s;
 }
 
 nav button:active {
-  outline: 2px solid black;
+  outline: 3px solid black;
   background-color: red;
   color: black;
 }
@@ -85,14 +87,16 @@ nav button:active {
 main {
   color: var(--color4);
   border-inline: 2px solid var(--color2);
-  padding-top: 8rem
+  padding-top: 8rem;
+  min-height: 100vh;
 }
 
 h1 {
   position: fixed;
   top: 10rem;
   margin-left: 10%;
-
+  text-decoration: underline;
+  text-decoration-color: var(--color3);
 }
 
 h1:hover {
@@ -106,7 +110,7 @@ h1:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  min-height: 100vh;
 }
 
 .card {
@@ -185,6 +189,25 @@ h1:hover {
 #submit-edit-btn:hover,
 #exit-edit-btn:hover {
   outline: 2px solid white;
+}
+
+.nothing-card {
+  outline: 4px solid var(--color2);
+  background-color: transparent;
+  width: 35vw;
+  height: 35vh;
+  padding: 2rem;
+  display: grid;
+  place-content: center;
+  color: white;
+}
+
+.nothing-card span {
+  color: var(--color3);
+}
+
+.nothing-card span:hover {
+  color: var(--color2);
 }
 
 /*  MODAL */
@@ -390,13 +413,11 @@ footer div {
 
 /* MEDIA QUERIES */
 
-@media screen and (max-width: 1109px) {
+@media screen and (max-width: 1249px) {
   h1 {
     position: static;
     text-align: center;
     margin-inline-start: 0;
-    text-decoration: underline;
-    text-decoration-color: var(--color3);
   }
 
   .card {
@@ -407,8 +428,6 @@ footer div {
     height: 35vw;
   }
 }
-
-/* @media screen (max-width: 654px) {} */
 
 @media screen and (max-width: 714px) {
   nav {
