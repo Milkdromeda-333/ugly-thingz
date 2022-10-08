@@ -23,3 +23,4 @@ I learned:
 (git config --global core.editor "code --wait" for vs code on windows)
 
 - To create css animations with the keyframe rule.
+- To deploy a vite site to github pages and bring in assets.
